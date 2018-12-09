@@ -95,7 +95,6 @@ class Toplevel1:
         diagnosis_name = self.patient_diagnosis_diagnosis_name_textbox.get('1.0', 'end-1c')
         diagnosis_Id = self.patient_diagnosis_diagnosisID_textbox.get('1.0', 'end-1c')
         diagnosis_date = self.patient_diagnosis_diagnosis_date_textbox.get('1.0', 'end-1c')
-        # update_diagnosis_id = self.patient_updatediagnosis_diagnosisID_textbox.get('1.0', 'end-1c')
         args = (patient_ssn, diagnosis_Id, diagnosis_date, diagnosis_name)
 
         try:

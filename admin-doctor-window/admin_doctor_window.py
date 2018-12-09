@@ -95,6 +95,7 @@ class Toplevel1:
         diagnosis_name = self.patient_diagnosis_diagnosis_name_textbox.get('1.0', 'end-1c')
         diagnosis_Id = self.patient_diagnosis_diagnosisID_textbox.get('1.0', 'end-1c')
         diagnosis_date = self.patient_diagnosis_diagnosis_date_textbox.get('1.0', 'end-1c')
+        # update_diagnosis_id = self.patient_updatediagnosis_diagnosisID_textbox.get('1.0', 'end-1c')
         args = (patient_ssn, diagnosis_Id, diagnosis_date, diagnosis_name)
 
         try:
@@ -157,12 +158,12 @@ class Toplevel1:
         drug_Date = self.patient_drug_treatment_drugdate_textbox.get('1.0', 'end-1c')
         args = (patient_ssn, drug_Id, drug_Name, drug_Date)
 
-        # try:
-        self.my_cursor.callproc('insertdrugtreatment', args)
-        self.my_db.commit()
-            # messagebox.showinfo('Submit Diagnosis Success', "You successfully submitted a patient's new drug treatment")
-        # except Exception:
-        #     messagebox.showerror('Error', "Error submitting patient's drug treatment")
+        try:
+            self.my_cursor.callproc('insertdrugtreatment', args)
+            self.my_db.commit()
+            messagebox.showinfo('Submit Diagnosis Success', "You successfully submitted a patient's new drug treatment")
+        except Exception:
+            messagebox.showerror('Error', "Error submitting patient's drug treatment")
 
 
 
@@ -403,7 +404,7 @@ class Toplevel1:
         self.patient_diagnosis_diagnosis_name_label.configure(text='''Diagnosis Name''')
 
         self.patient_diagnosis_diagnosisID_label = tk.Label(self.patient_diagnosis_labelframe)
-        self.patient_diagnosis_diagnosisID_label.place(relx=0.516, rely=0.122
+        self.patient_diagnosis_diagnosisID_label.place(relx=0.380, rely=0.122
                                                        , height=21, width=86, bordermode='ignore')
         self.patient_diagnosis_diagnosisID_label.configure(activebackground="#f9f9f9")
         self.patient_diagnosis_diagnosisID_label.configure(text='''Diagnosis ID''')
@@ -424,7 +425,7 @@ class Toplevel1:
         self.patient_diagnosis_diagnosis_name_textbox.configure(wrap='word')
 
         self.patient_diagnosis_diagnosisID_textbox = tk.Text(self.patient_diagnosis_labelframe)
-        self.patient_diagnosis_diagnosisID_textbox.place(relx=0.672, rely=0.122
+        self.patient_diagnosis_diagnosisID_textbox.place(relx=0.502, rely=0.122
                                                          , relheight=0.098, relwidth=0.119, bordermode='ignore')
         self.patient_diagnosis_diagnosisID_textbox.configure(background="white")
         self.patient_diagnosis_diagnosisID_textbox.configure(font="TkTextFont")
